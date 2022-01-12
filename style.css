@@ -1,0 +1,1067 @@
+/*======================GERAL====================*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+ul{
+  list-style: none;
+}
+
+p{
+  font-size: 1.3rem;  /*Perguntar para o cliente*/
+}
+
+h1{
+  font-size: 2rem;
+}
+
+/*====  VARIABLES ============================ */
+:root {
+  --header-height: 4.5rem;
+
+  /* colors */
+  --hue: 2000;  /*Original: 159*/
+  /* HSL color mode */
+  --base-color: hsl(var(--hue) 36% 57%);
+  --base-color-second: hsl(var(--hue) 65% 88%);
+  --base-color-alt: hsl(var(--hue) 57% 53%);
+  /*--title-color: hsl(var(--hue) 41% 10%);*/
+  --title-color:rgb(213, 98, 51);
+  --text-color: hsl(0 0% 46%);
+  --text-color-light: hsl(0 0% 98%);
+   /* --body-color: hsl(0 0% 98%);  */
+  --body-color:rgb(256, 256, 254, 0.3);
+
+
+  /*CHC*/
+  --body-color-alt3: rgb(219, 219, 223);
+  /* --body-color-alt1: rgb(10, 10, 13); */
+  --body-color-alt4:rgb(20, 20, 20);
+
+  --body-color-alt1: rgb(3, 48, 66);
+
+  --body-color-alt2: rgb(3, 32, 44);
+
+  --base-color-alt: rgb(0, 0, 2);
+  --active-color: rgb(45, 160, 207);
+
+  /*Texts boxes*/
+  --title-font-size: 1.875rem;
+  --subtitle-font-size: 1rem;
+}
+
+/*====  BASE ============================ */
+
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+  font: 400 1rem 'DM Sans', sans-serif;
+  color: var(--text-color);
+  background: var(--body-color-alt1);
+  -webkit-font-smoothing: antialiased;
+}
+
+.title {
+  font: 700 var(--title-font-size) 'Poppins', sans-serif;
+  color: var(--title-color);
+  -webkit-font-smoothing: auto;
+}
+
+.button {
+  background-color: var(--base-color);
+  color: var(--text-color-light);
+  height: 3.5rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 2rem;
+  border-radius: 0.25rem;
+  font: 500 1rem 'DM Sans', sans-serif;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background: var(--base-color-alt);
+}
+
+.divider-1 {
+  height: 1px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 36%, 57%, 1) 0%,
+    hsla(var(--hue), 65%, 88%, 0.34) 100%     /*Essa porcentagem é facultativa. se fosse para valores diferentes de 0 e 100, precisaria usar elas. Se não, por padrão, não precisa*/
+  );
+}
+
+.divider-2 {
+  height: 1px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 65%, 88%, 0.34) 0%,
+    hsla(var(--hue), 36%, 57%, 1) 100%
+  );
+}
+
+/*====  LAYOUT ============================ */
+.container {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.section {
+  padding: calc(5rem + var(--header-height)) 0;
+}
+
+
+.section .title{
+  margin-bottom: 1rem;
+}
+
+.section .subtitle{
+  font-size: var(--subtitle-font-size);
+}
+.section header{
+    margin-bottom: 4rem;
+}
+
+.section header p strong{
+    color: var(--base-color);
+}
+
+#header {
+  border-bottom: 1px solid var(--active-color)/*#e4e4e4*/;
+  margin-bottom: 2rem;
+  display: flex;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: white;   /* var(--body-color-alt3);     (--body-color); */
+  width: 100%;
+}
+
+#header.scroll{   /*Só não consegui tornar a transição suave*/
+  background: var(--base-color-alt);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+#header.scroll .logo span{
+    color: white;
+}
+
+#header.scroll .icon-menu{
+    color: white;
+}
+
+/*Adicionando a transição para o icon menu*/
+.icon-menu{
+    transition: color 0.3s;
+}
+
+/* .logo{
+  transition: color 10.3s;
+}*/
+
+#header .logo span{
+  transition: color 0.3s;
+}
+
+main {
+  margin-top: calc(var(--header-height) + 2rem);
+}
+
+
+/*===========LOGO============*/
+.logo,
+.logo-alt {
+  font: 700 1.31rem 'Poppins', sans-serif;
+  color: var(--title-color);
+}
+
+.novo_logo{
+  /* display: grid; */
+ /* height: 6rem;*/
+  width: 12rem;
+  height: 4rem;
+  /*object-fit: cover;  /*Ajusta melhor*/
+  /*clip-path: circle();*/
+  /*margin-right: 2rem;*/
+
+}
+
+.logo span {
+  color: var(--base-color);
+}
+
+.logo-alt span{
+  color:var(--body-color);
+}
+
+
+
+/*=========Navegation========*/
+nav {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+nav .menu{
+  opacity: 0;
+  visibility: hidden;
+  top: -20rem;
+  transition: 0.4s;
+}
+
+nav .menu ul{
+    display: none;    /*Para não aparecer a transição no canto da tela*/
+}
+
+nav.show .menu ul{
+    display: grid;   /*Aqui ele volta para aparecer denovo*/
+}
+
+nav ul li a:hover{   /*Enquanto estiver segurando o botão*/
+  color: var(--active-color);
+}
+
+
+
+/*Para corrigir o problema a cor diferente quando o header está ligado*/
+nav ul li a.active{
+  color: var(--active-color);
+}
+
+#header.scroll nav ul li a.active{
+  color:var(--active-color);
+}
+
+
+
+nav ul li a{
+  transition: color 0.2s;   /*Aplica os elementos do hover*/
+  position: relative;
+
+}
+
+nav ul li a:after{
+  content:"";
+  width: 0%;
+  height: 2px;
+  background-color: var(--base-color);
+  position:absolute;
+  left:0;
+  bottom: -1.5rem;
+
+  transition: width 0.2s;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after{
+  width: 100%;
+}
+
+
+/*MENU aberto->somente para mobile, que o menu não vai aparecer toda hora*/
+nav.show .menu{   /*Nav recebe a careaterística show*/
+  opacity: 1;
+  visibility: visible;
+
+  background: var(--body-color-alt2);
+  height: 100vh;
+  width: 100vw;
+
+  position:fixed;
+  top:0;
+  left:0;
+}
+
+
+nav ul{
+  text-align: center;
+}
+
+nav.show ul.grid { /*FOrça do comando*/
+  gap: 4rem;
+}
+
+nav.show .menu{
+  display: grid;
+  place-content: center; /*Ele coloca bem no centro o texto*/
+}
+
+
+
+/*------------Toggle menu---------*/
+
+nav .icon-close{
+  visibility:hidden;
+  opacity: 0;
+
+  position: absolute;
+  right: 1.5rem;
+  top: -1.5rem;
+  transition: 0.2s;
+  
+}
+
+nav.show div.icon-close{
+    visibility: visible;
+    opacity: 1;
+    top: 1.5rem;
+}
+
+.toggle{
+    color: var(--base-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+
+/*====  HOME ============================ */
+#home {
+  overflow: hidden;
+}
+
+#home .container {
+  margin: 1;      /*Original: 0 */
+}
+
+#home .image {
+  position: relative;
+}
+
+
+#home .image::before {
+  content: '';
+  height: 100%;
+  width: 100%;
+  background: var(--body-color-alt2);
+  position: absolute;
+  top: -16.8%;
+  left: 16.7%;
+  z-index: -1;
+}
+
+/* #home .image img {
+  position: relative;
+  right: 2.93rem;
+  width: 22rem;
+} */
+
+#home .image img,
+#home .image::before {
+  border-radius: 0.25rem;
+}
+
+
+/*Para ir para a tela cheia:      */
+/* #home .image img {
+  position: absolute;
+  height: 60rem;
+  width: 180%;
+  /* right: 2.93rem; */
+  /* top: -40rem;
+  left: -30rem;
+  z-index: 10;
+} */
+
+
+/*
+#home .image img,
+#home .image::before {
+  border-radius: 0.25rem;
+}
+*/
+#home .text {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  text-align: center;
+}
+
+#home .text h1 {
+  margin-bottom: 1rem;
+}
+
+#home .text p {
+  margin-bottom: 2rem;
+}
+
+
+
+
+
+/*====  ABOUT ============================ */
+
+#about{
+    background: var(--body-color-alt2);
+}
+
+#about .container {
+    margin: 0;
+  }
+  
+#about .image {
+  position: relative;
+}
+    
+#about .image::before {
+  content: '';
+  height: 100%;
+  width: 100%;
+  background: var(--base-color-second);
+  position: absolute;
+  top: -19.3%;
+  left: -33%;
+  z-index: 0;
+}
+    
+#about .image img {
+  position: relative;
+}
+    
+#about .image img,
+#about .image::before {
+      border-radius: 0.25rem;
+}
+    
+#about .text {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+
+
+
+  /*====  SERVICES ============================ */
+
+  #services header p{
+    color:var(--title-color);
+  }
+
+  .cards.grid{
+      gap: 1.5rem;
+  }
+
+
+  .card{
+      padding: 3.625rem 2rem;
+      box-shadow: 0px 0px 1rem rgba(3, 32, 44, 10.08);
+      border-bottom: 0.15rem solid var(--base-color);
+      border-radius: 0.25rem 0.25rem 0 0;
+      text-align: center;
+  }
+    
+  .card i{
+      display: block;
+      margin-bottom: 1.5rem;  /*Tamanho do ícone até o texto*/
+      font-size: 5rem;  /*Tamanho da imagem*/
+      color:var(--base-color);
+  }
+
+  .cards .title{
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+  }
+
+
+  /*===== SOLUTIONS =========*/
+
+  #solutions{
+    background: var(--body-color-alt2);
+  }
+
+  #solutions header p{
+    color:var(--title-color);
+  }
+
+   .topics .grid{
+    gap: 1.5rem;
+  } 
+
+
+  #solutions .topic{
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    padding: 3.625rem 2rem;
+    /* Essa parte só vai ter para página grande:
+     box-shadow: 1.3rem 2rem 0.3rem rgba(3, 48, 66, 0.98); */
+    border: 0.6rem solid var(--title-color);
+    border-radius: 2.25rem 2.25rem;
+    z-index:20;
+  }
+
+  #soluctions .topics{
+    z-index: 2;
+  }
+
+
+  #solutions .topic h1{
+    color: var(--title-color);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .topic h1 strong{
+    font-size: 2.5rem;
+  }
+
+  .topic p strong{
+    font-size: 2rem;
+    color:var(--title-color);
+  }
+
+  #solutions .topics {
+    position: relative;
+  }
+
+
+  #solutions .topics .topic {
+    position: relative;
+    /* right: 2.93rem;
+    width: 22rem; */
+  }
+
+
+/*---------------------CLIENTS------------------------------*/
+
+
+/* #clients .client_img{
+  padding: 3.625rem 2rem;
+  box-shadow: 0px 0px 1rem rgba(3, 32, 44, 10.08);
+  border-bottom: 0.15rem solid var(--base-color);
+  border-radius: 10.25rem 10.25rem;
+  text-align: center;
+} */
+/* 
+#clients .client_img img{
+  width: 40%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: circle();
+  /* clip-path: ellipse(); */
+  /* border-radius: 50rem; */
+/*  margin-right: 0.5rem;
+} */
+
+
+#clients .clients_img{
+  /* display:inline-flex; */
+  /* gap: 4rem 0rem; */
+  margin: 0rem 20rem 0rem 0rem;
+
+}
+
+
+
+/* #clients .client_img img::before{
+  content: "";
+  width: 50rem;
+  background-color: yellow;
+  align-items: center;
+  justify-content: center;
+} */
+
+
+/* #clients .client_img {
+  align-items: center;
+  border-radius: 50%;
+  width: 17rem;
+  height: 10rem;
+  background: green;
+  display: block; 
+} */
+
+/* #clients .client_img img::before{
+  content:"";
+  background: blue;
+  width:500rem;
+  z-index: 3;
+} */
+
+
+#clients .client_img  img{
+  width: 13rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  clip-path: ellipse();
+  background: rgb(255, 255, 255);
+}
+
+  /*  width: 100%;
+  height:100%;
+  zoom: 40%;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*SWIPER*/
+
+
+.swiper-slide{
+  height:auto;
+  padding: 4rem 1rem;
+}
+
+.swiper-pagination-bullet{
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.swiper-pagination-bullet-active{ /*quando a bolinha estiver ativa*/
+  background: var(--base-color);  /*cor da bolinha*/
+}
+
+
+
+
+/*============  CONTACT  ============================ */
+
+#contact{
+  background: var(--body-color-alt2);
+}
+
+#contact .grip{ /*no meu isso nao mudou nada*/
+  gap: 4rem;
+}
+
+#contact .text a{
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+#contact .text .button i{  
+  margin-right: 0.625rem;
+  font-size: 1.5rem;
+}
+
+#contact ul.grid{
+  margin-bottom: 2rem;
+}
+
+#contact .links li a{
+  margin-right: 0.75rem;
+  font-size: 1.5rem;
+  color: var(--base-color);        
+}
+
+
+/*============  FOOTER  ============================ */
+
+footer{
+  /* background-color: var(--base-color); */
+  background-color: var(--base-color-alt);
+}
+
+
+footer .novo_logo{
+  margin-top:1rem;
+  width: 17rem;
+  height: 70%;
+
+  margin-left: -0.5rem;
+}
+
+footer #logo-alt{
+  display: inline-block;   /*Só tem bottom se for block tbm*/
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+footer .brand span{
+  color: alt
+}
+
+footer .brand p{
+  color: var(--text-color-light); 
+  margin-bottom: 0.75rem;
+}
+
+
+footer .social ul{
+  display:flex;
+  font-size: 1.5rem;
+  gap: 2rem;
+  margin-top: -0.75rem;
+  margin-bottom: 4rem;
+
+  padding-top: 6rem;
+}
+
+footer .social ul li i:hover{
+  transform: translateY(-7px);
+}
+
+footer .social ul i{
+  color:var(--text-color-light);
+  transition: 0.3s;
+  display: inline-block;  /*Sem isso o transition não funciona*/
+}
+
+
+/*============  VOLTA PÁGINA  ============================ */
+
+
+
+.turn-back{
+  background-color: var(--base-color);
+  color: var(--text-color-light);
+
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  
+  font-size: 2.0rem;
+  clip-path: circle();
+  line-height: 1rem;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition: 0.3s;
+  transform: translateY(100%);
+  
+}
+
+.turn-back.show{
+  visibility: visible;
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+
+
+
+
+/*============== MEDIA QUERIES ==============*/
+/*Para disposotivos maiores: computadores*/
+
+@media (min-width: 1200px) {      /*No inglês, o @ significa "at"*/
+
+
+  /*---------------LAYOUT--------------*/
+    :root{
+      --title-font-size: 2.25rem;
+      --subtitle-font-size: 1.125rem;
+    }
+
+    main {
+      margin-top: calc(var(--header-height));
+    }
+
+    .section{
+      padding: 10rem 0;
+    }
+
+    .container{
+      max-width: 1120px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+
+    /*=====Navegation======*/
+    nav .menu ul{
+      display:flex;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    nav .menu .title{
+      font: 400 1rem 'DM Sans', sans-serif;
+      /* -webkit-font-smoothing: antialiased; */
+    }
+
+    nav ul li a:after{
+      background: var(--active-color);
+      bottom: -1.6rem;
+    }
+
+    /* nav .menu ul li a.title.active{
+      font-weight: bold;
+      -webkit-font-smoothing: auto;
+    } */
+    
+    nav .menu{
+      opacity: 1;
+      visibility: visible;
+      place-content: right;
+      
+    }
+
+
+    nav.show .menu{   /*Nav recebe a careaterística show*/
+      opacity: 0;
+      visibility: hidden;
+    }
+
+
+
+    .toggle{
+      /*
+      visibility: hidden;
+      opacity: 0;
+    */
+      display:none;   /*É melhor do que a primeira opção, pois ele deixa os ícones no lugar certo (isto é, no canto)*/
+    }
+
+
+    nav.scroll ul li a:after{
+      background-color: var(--active-color);
+    }
+
+    nav.scroll ul li a:hover{   /*Enquanto estiver segurando o botão*/
+      color: var(--active-color);
+    }
+    
+
+    /*======HOME========*/
+
+    .novo_logo{
+      /* display: grid; */
+     /* height: 6rem;*/
+      width: 12rem;
+      height: 3rem;
+      /* margin-left:-1rem; */
+      /*object-fit: cover;  /*Ajusta melhor*/
+      /*clip-path: circle();*/
+      /*margin-right: 2rem;*/
+    
+    }
+
+    #home .container{
+      /*display: inline-flex;
+      flex-direction: row-reverse;
+      */
+      grid-auto-flow: column;
+      justify-content: space-between;
+      margin: 0 auto;
+    }
+
+    #home .text {
+      /* padding-left: -6.375rem; */
+      margin-left: -1.3125rem;
+      /* margin-right: 7.375rem; */
+      max-width: 24rem;
+      text-align: left;
+      order: 0;
+    }
+
+    #home .image{
+      order: 1; /*Para organizar o layaut*/
+    }
+
+    #home .text a{
+      height: 3.125rem;
+    }
+
+
+
+    /*=====ABOUT======*/
+
+    #about .container{
+      grid-auto-flow: column;
+      margin: 0 auto;
+    }
+
+    #about .image::before{
+      top: -10.8%;
+      left: -10.7%;
+      height: 90%;
+    }
+
+    #about .image{
+      width: 38rem;
+      left: -6%;
+    }
+
+
+
+    /*=====SERVICES======*/
+
+    #services header{
+      text-align: center;
+    }
+    
+    #services .cards{
+      grid-template-columns: 1fr;   /*divide em 3*/
+    }
+
+    #services .cards .card:hover{         /*Fazer o item selecionado dar uma subidinha*/
+      transform: translateY(-1.2rem);
+    }
+
+    #services .cards .card{
+      transition: 0.3s;
+      padding: 2.5rem 7rem;            /* Original: 3.625rem 3rem; */
+      margin: 0rem 0;
+    }
+
+    #services .card{
+      display: flex;
+    }
+
+    #services .card .icon i{
+      font-size: 7.5rem;
+    }
+
+    #services .card .icon{
+      padding: -3rem;
+    }
+
+    /* #services  */
+
+    /* #services .card h3{
+      max-width: 32rem;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    } */
+
+    #services .card .text{
+      max-width: 32rem;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+
+
+
+    /*=====SOLUTIONS======*/
+  
+    #solutions .topics{
+      grid-template-columns: 1fr 1fr;   /*divide em 3*/
+      display: flex;
+      gap: 4rem;
+    }
+    
+    #solutions .topic{
+    box-shadow: 1.3rem 2rem 0.3rem rgba(3, 48, 66, 0.98);
+    }
+
+    #solutions .topics .topic:hover{         /*Fazer o item selecionado dar uma subidinha*/
+      transform: translateY(-1.2rem);
+      /* background-color: var(--body-color-alt1); */
+      
+    }
+
+    /* ARRUMA ISSO AQUI DEPOIS!!!!!!!!!!!!!!!!! */
+
+    #solutions .topics .topic{
+      transition: 0.3s;
+    }
+
+
+    #solutions .topics .topic{
+      /* transition: 0.3s; */
+      padding: 3.625rem 3rem;
+    }
+
+    #solutions header{
+      max-width: 32rem;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    /* O que seria essa parte??? */
+    #solutions #topic::hover{
+      background-color: red;
+      background: blue;
+    }
+
+
+    /*======CLIENTS========= */
+    #clients .clients_img{
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+    }
+
+
+    /*======CONTACT=========*/
+
+    #contact .container{
+      grid-auto-flow: column;
+    }
+
+    #contact .text{
+      width: 25.3rem;
+    }
+
+    #contact .links{
+      padding-top: 4rem;
+    }
+
+
+    /*=====FOOTER=========*/
+
+
+    footer .novo_logo{
+      width: 18rem;
+      height: 80%;
+    }
+
+    footer .container{
+      grid-auto-flow: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+     footer .social{
+      padding-top: 7rem;
+    } 
+
+    footer .social ul{
+      padding-top: 0rem;
+    }
+
+
+    /*=====TURN-BACK=======*/
+
+    .turn-back i{
+      font-size: 130%;
+    }
+} 
+
